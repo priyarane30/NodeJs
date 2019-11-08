@@ -21,12 +21,16 @@ app.get('', (req, res) => {
 }) 
 
 app.get('/calculator', (req, res) => {     
-    res.render('calculator', 
+    var myText = req.query.mytext; //mytext is the name of your input box
+    if(myText !=undefined)
+    res.send('Your Text:' +myText); 
+   /* res.render('calculator', 
     {         
         title: 'Hello',         
         name: 'Priya'     
-    }) 
+    }) */
 }) 
+
 
 app.get('/student', (req, res) => {     
     res.render('student', 
