@@ -8,11 +8,25 @@
 <body>     
       {{>header}} 
 
-     <input type="text" name="mytext" required />
-      <input type="text" name="mytext1" required />
-    <input type="submit" value="Submit" />
+
+<form action="/submit-calculate-data" method="post">
+<br /><br />
+<h1> Calculator</h1>
+<br /><br />
+        First Number: <input name="firstNo" type="number" /> <br /><br />
+        Second Number: <input name="secondNo" type="number" /> <br />
+<br />
+       <input type="submit" name="cal" value="add">
+    <input type="submit" name="cal" value="substract">
+     <input type="submit" name="cal" value="multi">
+    <input type="submit" name="cal" value="division">
+    <br/>
+<br />
+     <p>Result is: {{result}}</p> 
+    </form>
 
     
     </body> 
  
 </html> 
+
