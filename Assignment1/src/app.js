@@ -2,6 +2,7 @@ const express=require('express')
 const path = require('path') 
 const hbs = require('hbs') 
 var bodyParser = require('body-parser');
+const fs=require('fs');
 //var calc = require('./routes/calculator');
 //var calculatorfun = require('./calculator');
 
@@ -42,13 +43,13 @@ module.exports = app;*/
 //}) 
 
 
-/*app.get('/student', (req, res) => {     
+app.get('/student', (req, res) => {     
     res.render('student', 
     {         
         title: 'Hello',         
         name: 'Priya'     
     }) 
-}) */
+}) 
 
 app.get('/calculator', function (req, res) {
     res.render('calculator', 
@@ -137,10 +138,40 @@ app.get('/student', function (req, res) {
 app.post('/submit-student-data', function (req, res) {
     debugger;
     var name = req.body.firstName + ' ' + req.body.lastName;
-    
+  /*  const note={
+        firstName:req.body.firstName,
+        lastName:req.body.lastName
+    }*/
+    const note= loadfs();
+    debugger;
+    note.push({
+        firstName:req.body.firstName,
+        lastName:req.body.lastName
+    })
+    const JSONnote=JSON.stringify(note);
+    console.log(note)
+
+    fs.writeFileSync('1.json',JSONnote)
+   // saveNotes(note);
     res.send(name + ' Submitted Successfully!');
 });
  
+const loadfs=function(){
+    try{
+    const readbufferfromFiles=fs.readFileSync('1.json');
+    const datatstring=readbufferfromFiles.toString();
+    const dataparse=JSON.parse(datatstring)
+    return(dataparse);
+    }
+    catch(ex){
+        return [];
+    }
+}
+
+const saveNotes=function(note){
+    const JSONnote=JSON.stringify(note);
+    fs.writeFileSync('1.json',JSONnote)
+    }
 app.listen(3000,()=>{
     console.log('server is running on port 3000')
 })

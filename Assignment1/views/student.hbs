@@ -9,9 +9,30 @@
       {{>header}} 
 
 <form action="/submit-student-data" method="post">
-        First Name: <input name="firstName" type="text" /> <br />
-        Last Name: <input name="lastName" type="text" /> <br />
-        <input type="submit" />
+      
+     
+
+       <h1>Crud Operation Page</h1>
+    <table>
+        <tr>
+            <td>First Name:</td>
+            <td>
+             <input name="firstName" type="text" required /> 
+            </td>
+        </tr>
+        <tr>
+            <td>Last Name:</td>
+            <td>
+                <input name="lastName" type="text" required/>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                 <input type="submit" name="crud" value="add">
+            </td>
+        </tr>
+    </table>
     </form>
  
     
